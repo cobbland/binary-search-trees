@@ -1,2 +1,3 @@
-# binary-search-trees
-A The Odin Project project
+# Binary Search Trees
+
+A The Odin Project project.
