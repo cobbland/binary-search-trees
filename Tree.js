@@ -59,8 +59,16 @@ export default class Tree {
         }
     }
 
-    deleteItem(value) {
-
+    deleteItem(value, root = this.root, lastRoot = null) {
+        if (value === root.value) {
+            let leftNode = root.left;
+            let rightNode = root.right;
+            // attach lastRoot to children
+        } else if (value < root.value) {
+            this.deleteItem(value, root.left, root);
+        } else if (value > root.value) {
+            this.deleteItem(value, root.right, root);
+        }
     }
 
 }
