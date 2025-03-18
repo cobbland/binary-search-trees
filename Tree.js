@@ -1,10 +1,26 @@
 import Node from "./Node.js";
+import mergeSort from "./merge-sort.js";
 
 export default class Tree {
 
     constructor(arr) {
-        this.arr = arr;
+        this.arr = this.removeDuplicates(mergeSort(arr));
         this.root = this.buildTree(this.arr);
+    }
+
+    removeDuplicates(arr) {
+        const seen = {};
+        const noDuplicatesArr = []
+        for (let thing in arr) {
+            if (seen[arr[thing]] !== 1) {
+                seen[arr[thing]] = 1;
+                noDuplicatesArr.push(arr[thing]);
+            }
+        }
+        return noDuplicatesArr;
+        // The following seems better but isn't my own:
+        // return Array.from(new Set(arr));
+        // return arr;
     }
 
     /*
