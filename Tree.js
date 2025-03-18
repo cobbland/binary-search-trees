@@ -59,16 +59,62 @@ export default class Tree {
         }
     }
 
-    deleteItem(value, root = this.root, lastRoot = null) {
-        if (value === root.value) {
-            let leftNode = root.left;
-            let rightNode = root.right;
-            // attach lastRoot to children
-        } else if (value < root.value) {
-            this.deleteItem(value, root.left, root);
-        } else if (value > root.value) {
-            this.deleteItem(value, root.right, root);
+    lowestHigh(root) {
+        // find the lowest leaf on the high (right) side of a root node
+        let lowHigh = root.right;
+        let lastLowHigh;
+        while (lowHigh !== null) {
+            lastLowHigh = lowHigh;
+            lowHigh = lowHigh.left;
         }
+        return lastLowHigh;
+    }
+
+    deleteItem(value, root = this.root, lastRoot = new Node(null)) {
+        // base case: the tree has been traversed to the end without finding value
+        if (root === null) {
+            console.log("Value not found in tree.");
+            return;
+        }
+
+        if (root.data === value) { // Alternative base case(?): value is found...
+            if (root.left === null && root.right === null) { //...without children.
+                if (value > lastRoot.data) {
+                    lastRoot.right = null;
+                } else if (value < lastRoot.data) {
+                    lastRoot.left = null;
+                }
+            } else if (root.left === null) { //...with only right child.
+                if (value > lastRoot.data) {
+                    lastRoot.right = root.right;
+                } else {
+                    lastRoot.left = root.right;
+                }
+            } else if (root.right === null) { //...with only left child.
+                if (value > lastRoot.data) {
+                    lastRoot.right = root.left;
+                } else {
+                    lastRoot.left = root.left;
+                }
+            } else { //...with children on both sides.
+                const replaceWith = this.lowestHigh(root);
+                this.deleteItem(replaceWith.data);
+                replaceWith.right = root.right;
+                replaceWith.left = root.left;
+                if (value === this.root.data) {
+                    this.root = replaceWith;
+                } else if (value > lastRoot.data) {
+                    lastRoot.right = replaceWith;
+                } else {
+                    lastRoot.left = replaceWith;
+                }
+            }
+        } else if (value > root.data) { // Recursive case: to the right
+            this.deleteItem(value, root.right, root);
+        } else if (value < root.data) { // Recursive case: to the left
+            this.deleteItem(value, root.left, root);
+        }
+
     }
 
 }

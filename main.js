@@ -25,10 +25,14 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 prettyPrint(test.root);
 
-test.insertItem(6);
+// test.insertItem(6);
 
-prettyPrint(test.root);
+// prettyPrint(test.root);
 
-test.insertItem(101);
+// test.insertItem(101);
+
+// prettyPrint(test.root);
+
+test.deleteItem(8);
 
 prettyPrint(test.root);
