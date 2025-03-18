@@ -24,3 +24,11 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 prettyPrint(test.root);
+
+test.insertItem(6);
+
+prettyPrint(test.root);
+
+test.insertItem(101);
+
+prettyPrint(test.root);

@@ -40,6 +40,27 @@ export default class Tree {
         return root;
     }
 
+    insertItem(value, root = this.root) {
+        if (root.data === value) {
+            console.log("Value already in tree.");
+            return;
+        } else if (root.data > value) {
+            if (root.left === null) {
+                root.left = new Node(value);
+            } else {
+                this.insertItem(value, root.left);
+            }
+        } else if (root.data < value) {
+            if (root.right === null) {
+                root.right = new Node(value);
+            } else {
+                this.insertItem(value, root.right);
+            }
+        }
+    }
 
+    deleteItem(value) {
+
+    }
 
 }
