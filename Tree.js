@@ -9,15 +9,14 @@ export default class Tree {
     }
 
     removeDuplicates(arr) {
-        const seen = {};
-        const noDuplicatesArr = []
+        const newArr = []
         for (let thing in arr) {
-            if (seen[arr[thing]] !== 1) {
-                seen[arr[thing]] = 1;
-                noDuplicatesArr.push(arr[thing]);
+            if (arr[thing] !== arr[thing - 1]) {
+                newArr.push(arr[thing]);
             }
         }
-        return noDuplicatesArr;
+        return newArr;
+
         // The following seems better but isn't my own:
         // return Array.from(new Set(arr));
         // return arr;
