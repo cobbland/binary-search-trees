@@ -132,4 +132,21 @@ export default class Tree {
         } 
     }
 
+    levelOrder(callback = null, queueArr = [], root = this.root) {
+        if (callback === null) {
+            throw new Error("Callback required.");
+        }
+        queueArr.push(root);
+        while (root !== null) {
+            if (root.left) {
+                queueArr.push(root.left);
+            }
+            if (root.right) {
+                queueArr.push(root.right);
+            }
+            root = root.left
+        }
+        callback(queueArr);
+    } // does not currently work
+
 }

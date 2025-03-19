@@ -33,8 +33,14 @@ prettyPrint(test.root);
 
 // prettyPrint(test.root);
 
-test.deleteItem(8);
+// test.deleteItem(8);
 
-prettyPrint(test.root);
+// prettyPrint(test.root);
 
-console.log(test.find(233));
+// console.log(test.find(233));
+
+try {
+    test.levelOrder(console.log);
+} catch(error) {
+    console.log(error);
+}
