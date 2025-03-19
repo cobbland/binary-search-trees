@@ -36,3 +36,5 @@ prettyPrint(test.root);
 test.deleteItem(8);
 
 prettyPrint(test.root);
+
+console.log(test.find(233));

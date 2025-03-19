@@ -114,7 +114,22 @@ export default class Tree {
         } else if (value < root.data) { // Recursive case: to the left
             this.deleteItem(value, root.left, root);
         }
+    }
 
+    find(value, root = this.root) {
+        // base cases:
+        if (root === null) {
+            console.log("Value not in tree.");
+            return;
+        } else if (value === root.data) {
+            return root;
+        }
+
+        if (value > root.data) {
+            return this.find(value, root.right);
+        } else if (value < root.data) {
+            return this.find(value, root.left);
+        } 
     }
 
 }
