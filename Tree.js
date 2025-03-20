@@ -188,4 +188,14 @@ export default class Tree {
         callback(root);
     }
 
+    height(node) {
+        if (node === null) {
+            return -1;
+        }
+        let nodeHeightLeft = this.height(node.left);
+        let nodeHeightRight = this.height(node.right);
+        return nodeHeightLeft >= nodeHeightRight ? nodeHeightLeft + 1 : nodeHeightRight + 1;
+    }
+
 }
+
