@@ -157,7 +157,9 @@ export default class Tree {
             return;
         }
         // left -> root -> right
-
+        this.inOrder(callback, root.left);
+        callback(root);
+        this.inOrder(callback, root.right);
     }
 
     preOrder(callback = null, root = this.root) {
@@ -181,7 +183,9 @@ export default class Tree {
             return;
         }
         // left -> right -> root
-        
+        this.postOrder(callback, root.left);
+        this.postOrder(callback, root.right);
+        callback(root);
     }
 
 }

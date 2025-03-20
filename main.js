@@ -1,6 +1,6 @@
 import Tree from "./Tree.js";
 
-const test = new Tree([1, 7, 4, 3, 23, 8, 9, 4, 3, 5, 7, 9, 67, 3, 6345, 324]);
+const test = new Tree([1, 2, 6, 7, 4, 3, 23, 8, 9, 4, 3, 5, 7, 9, 67, 3, 6345, 324]);
 
 console.log(test.root);
 
@@ -40,7 +40,7 @@ prettyPrint(test.root);
 // console.log(test.find(233));
 
 try {
-    test.preOrder(console.log);
+    test.postOrder(console.log);
 } catch(error) {
     console.log(error);
 }
