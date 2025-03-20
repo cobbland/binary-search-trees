@@ -132,21 +132,21 @@ export default class Tree {
         } 
     }
 
-    levelOrder(callback = null, queueArr = [], root = this.root) {
+    levelOrder(callback = null) {
         if (callback === null) {
             throw new Error("Callback required.");
         }
-        queueArr.push(root);
-        while (root !== null) {
-            if (root.left) {
-                queueArr.push(root.left);
+        const queueArr = [this.root];
+        while (queueArr.length > 0) {
+            if (queueArr[0].left) {
+                queueArr.push(queueArr[0].left);
             }
-            if (root.right) {
-                queueArr.push(root.right);
+            if (queueArr[0].right) {
+                queueArr.push(queueArr[0].right);
             }
-            root = root.left
+            callback(queueArr[0]);
+            queueArr.shift();
         }
-        callback(queueArr);
-    } // does not currently work
+    } 
 
 }
