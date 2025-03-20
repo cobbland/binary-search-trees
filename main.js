@@ -1,21 +1,5 @@
 import Tree from "./Tree.js";
 
-const test = new Tree(
-    [
-        3, 67, 12,
-    ]
-);
-
-const addToTest = [
-    89, 45, 1, 4, 5, 90, 46, 47
-];
-
-for (let num in addToTest) {
-    test.insertItem(addToTest[num]);
-}
-
-console.log(test.root);
-
 /*
 Tip: If you would like to visualize your binary search tree, 
 here is a prettyPrint() function that will console.log your tree 
@@ -35,34 +19,68 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     }
 };
 
-// test.insertItem(6);
+const arrTest = (num) => {
+    const arr = [];
+    while (num > 0) {
+        arr.push(
+            Math.round(Math.random() * 100)
+        );
+        --num;
+    }
+    return arr;
+}
 
-// prettyPrint(test.root);
-
-// test.insertItem(101);
-
-// prettyPrint(test.root);
-
-// prettyPrint(test.root);
-
-// console.log(test.find(233));
-
-// try {
-//     test.postOrder(console.log);
-// } catch(error) {
-//     console.log(error);
-// }
-
-// console.log(test.depth(test.find(10)));
-
-// test.deleteItem(5);
+const test = new Tree(arrTest(10));
 
 prettyPrint(test.root);
 
-console.log(test.isBalanced());
+console.log(`Balanced: ${test.isBalanced()}`);
+
+// console.log("## Level Order")
+// test.levelOrder(console.log);
+
+// console.log("## In Order")
+// test.inOrder(console.log);
+
+// console.log("## Pre Order")
+// test.preOrder(console.log);
+
+// console.log("## Post Order")
+// test.postOrder(console.log);
+
+const higherArr = (num) => {
+    const arr = [];
+    while (num > 0) {
+        arr.push(
+            Math.round(Math.random() * 1000)
+        );
+        --num;
+    }
+    return arr;
+}
+
+for (const num of higherArr(5)) {
+    test.insertItem(num);
+}
+
+prettyPrint(test.root);
+
+console.log(`Balanced: ${test.isBalanced()}`);
 
 test.rebalance();
 
 prettyPrint(test.root);
 
-console.log(test.isBalanced());
+console.log(`Balanced: ${test.isBalanced()}`);
+
+// console.log("## Level Order")
+// test.levelOrder(console.log);
+
+// console.log("## In Order")
+// test.inOrder(console.log);
+
+// console.log("## Pre Order")
+// test.preOrder(console.log);
+
+// console.log("## Post Order")
+// test.postOrder(console.log);
