@@ -60,3 +60,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 prettyPrint(test.root);
 
 console.log(test.isBalanced());
+
+console.log(test.rebalance());
