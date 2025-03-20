@@ -61,4 +61,8 @@ prettyPrint(test.root);
 
 console.log(test.isBalanced());
 
-console.log(test.rebalance());
+test.rebalance();
+
+prettyPrint(test.root);
+
+console.log(test.isBalanced());

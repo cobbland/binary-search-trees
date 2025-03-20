@@ -223,9 +223,9 @@ export default class Tree {
             return;
         }
         this.rebalance(node.left, arr);
-        arr.push(node);
+        arr.push(node.data);
         this.rebalance(node.right, arr);
-        return arr; // instead of returning, build new tree
+        this.root = this.buildTree(arr);
     }
 
 }
