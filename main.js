@@ -40,7 +40,7 @@ prettyPrint(test.root);
 // console.log(test.find(233));
 
 try {
-    test.levelOrder(console.log);
+    test.preOrder(console.log);
 } catch(error) {
     console.log(error);
 }
