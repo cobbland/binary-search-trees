@@ -190,11 +190,26 @@ export default class Tree {
 
     height(node) {
         if (node === null) {
-            return -1;
+            return 0;
         }
         let nodeHeightLeft = this.height(node.left);
         let nodeHeightRight = this.height(node.right);
         return nodeHeightLeft >= nodeHeightRight ? nodeHeightLeft + 1 : nodeHeightRight + 1;
+    }
+
+    depth(node, root = this.root, nodeDepth = 0) {
+        if (root === null) {
+            console.log("Node not in tree.")
+            return;
+        }
+        if (node.data === root.data) {
+            return nodeDepth;
+        }
+        if (node.data > root.data) {
+            return this.depth(node, root.right, nodeDepth + 1);
+        } else if (node.data < root.data) {
+            return this.depth(node, root.left, nodeDepth + 1);
+        }
     }
 
 }
