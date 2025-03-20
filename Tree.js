@@ -138,15 +138,15 @@ export default class Tree {
         }
         const queueArr = [this.root];
         while (queueArr.length > 0) {
-            if (queueArr[0].left) {
-                queueArr.push(queueArr[0].left);
+            const currentNode = queueArr.shift();
+            callback(currentNode);
+            if (currentNode.left) {
+                queueArr.push(currentNode.left);
             }
-            if (queueArr[0].right) {
-                queueArr.push(queueArr[0].right);
+            if (currentNode.right) {
+                queueArr.push(currentNode.right);
             }
-            callback(queueArr[0]);
-            queueArr.shift();
         }
-    } 
+    }
 
 }
