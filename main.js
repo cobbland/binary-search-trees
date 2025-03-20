@@ -2,22 +2,17 @@ import Tree from "./Tree.js";
 
 const test = new Tree(
     [
-        3, 67, 12, 89, 45, 78, 23, 56, 34, 90,
-        1, 54, 76, 32, 87, 43, 21, 65, 98, 10,
+        3, 67, 12,
     ]
 );
 
-// const addToTest = [
-//    5, 72, 36, 84, 19, 60, 29, 77, 41, 93,
-//    8, 50, 68, 14, 81, 39, 25, 70, 95, 17
-//     4, 61, 27, 86, 49, 75, 20, 57, 92, 38,
-//     7, 66, 13, 83, 42, 79, 30, 62, 94, 16,
-//     0, 53, 88, 33, 99, 46, 11, 52, 40, 51
-// ]
+const addToTest = [
+    89, 45, 1, 4, 5, 90, 46, 47
+];
 
-// for (let num in addToTest) {
-//     test.insertItem(addToTest[num]);
-// }
+for (let num in addToTest) {
+    test.insertItem(addToTest[num]);
+}
 
 console.log(test.root);
 
@@ -40,8 +35,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     }
 };
 
-prettyPrint(test.root);
-
 // test.insertItem(6);
 
 // prettyPrint(test.root);
@@ -49,8 +42,6 @@ prettyPrint(test.root);
 // test.insertItem(101);
 
 // prettyPrint(test.root);
-
-// test.deleteItem(8);
 
 // prettyPrint(test.root);
 
@@ -62,4 +53,10 @@ prettyPrint(test.root);
 //     console.log(error);
 // }
 
-console.log(test.depth(test.find(10)));
+// console.log(test.depth(test.find(10)));
+
+// test.deleteItem(5);
+
+prettyPrint(test.root);
+
+console.log(test.isBalanced());

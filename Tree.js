@@ -16,24 +16,13 @@ export default class Tree {
             }
         }
         return newArr;
-
-        // The following seems better but isn't my own:
-        // return Array.from(new Set(arr));
-        // return arr;
     }
 
-    /*
-    Write a buildTree(array) function that takes an array of data 
-    (e.g., [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]) and turns it into 
-    a balanced binary tree full of Node objects appropriately placed 
-    (don’t forget to sort and remove duplicates!). 
-    The buildTree function should return the level-0 root node.
-    */
     buildTree(arr, start = 0, end = arr.length - 1) {
         if (start > end) {
             return null;
         }
-        const mid = Math.floor((start + end) / 2) // does that work to calculate the middle of the array?
+        const mid = Math.floor((start + end) / 2)
         const root = new Node(arr[mid]);
         root.left = this.buildTree(arr, start, mid - 1);
         root.right = this.buildTree(arr, mid + 1, end);
@@ -117,7 +106,6 @@ export default class Tree {
     }
 
     find(value, root = this.root) {
-        // base cases:
         if (root === null) {
             console.log("Value not in tree.");
             return;
@@ -190,7 +178,7 @@ export default class Tree {
 
     height(node) {
         if (node === null) {
-            return 0;
+            return -1;
         }
         let nodeHeightLeft = this.height(node.left);
         let nodeHeightRight = this.height(node.right);
@@ -209,6 +197,24 @@ export default class Tree {
             return this.depth(node, root.right, nodeDepth + 1);
         } else if (node.data < root.data) {
             return this.depth(node, root.left, nodeDepth + 1);
+        }
+    }
+
+    isBalanced(node = this.root) {
+        if (node === null) {
+            return true;
+        }
+        const leftHeight = this.height(node.left);
+        const rightHeight = this.height(node.right);
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return false;
+        } else if (
+            this.isBalanced(node.left) && 
+            this.isBalanced(node.right)
+        ) {
+            return true;
+        } else {
+            return false;
         }
     }
 
